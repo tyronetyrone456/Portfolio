@@ -22,7 +22,7 @@ function Fact({ icon: Icon, label, value }: { icon: LucideIcon; label: string; v
 }
 
 export function About() {
-  const { facts, bio } = profile
+  const { facts, bio, photo } = profile
 
   return (
     <Section
@@ -48,7 +48,17 @@ export function About() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
+        <Reveal delay={0.1} className="space-y-6">
+          {photo && (
+            <img
+              src={photo}
+              alt="Portrait of Tyrone Fontanilla"
+              width={400}
+              height={400}
+              loading="lazy"
+              className="aspect-square w-full max-w-xs rounded-2xl border border-border object-cover shadow-lg"
+            />
+          )}
           <dl className="card divide-y divide-border p-6">
             <Fact icon={GraduationCap} label="Degree program" value={facts.degree} />
             <Fact icon={School} label="University" value={facts.university} />
