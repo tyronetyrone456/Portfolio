@@ -29,6 +29,7 @@ export const projects: Project[] = [
       'Activity logs',
       'PDF and Excel export',
     ],
+    image: '/projects/advisched.jpg',
     repoUrl: 'https://github.com/tyronetyrone456/AdviSched',
     demoUrl: 'https://advi-sched.vercel.app/',
     confirmed: true,
