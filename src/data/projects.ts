@@ -15,19 +15,23 @@ import type { Project } from '@/types'
 export const projects: Project[] = [
   {
     id: 'academic-advising-scheduler',
-    title: 'Digital Academic Advising and Consultation Scheduling System',
-    summary: 'A system concept for helping students schedule consultations with faculty advisers.',
+    title: 'AdviSched: Academic Advising and Consultation Scheduling',
+    summary: 'A cross-platform app for booking consultations between students and faculty advisers.',
     description:
-      'A scheduling system concept that connects students with faculty advisers. It covers booking consultation slots, managing adviser availability, and keeping both sides informed.',
+      'AdviSched lets students schedule consultations with faculty advisers, while advisers manage their availability and appointments. It runs as a web app and a mobile app from one Expo codebase, backed by a Django REST API.',
     category: 'Academic Projects',
-    stack: ['Edit with your actual stack'],
+    stack: ['React Native', 'Expo', 'TypeScript', 'NativeWind', 'Django', 'Django REST Framework', 'PostgreSQL'],
     features: [
       'Appointment booking',
       'Faculty availability management',
-      'Approval workflow',
-      'Notifications',
+      'Meetings and consultation tracking',
+      'Push notifications',
+      'Activity logs',
+      'PDF and Excel export',
     ],
-    confirmed: false,
+    repoUrl: 'https://github.com/tyronetyrone456/AdviSched',
+    demoUrl: 'https://advi-sched.vercel.app/',
+    confirmed: true,
   },
   {
     id: 'retail-inventory-system',
