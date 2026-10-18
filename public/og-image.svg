@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7c5cff"/>
+      <stop offset="1" stop-color="#3b82f6"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.85" cy="0.1" r="0.7">
+      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#08080d"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <rect x="80" y="90" width="72" height="72" rx="18" fill="none" stroke="url(#g)" stroke-width="3"/>
+  <text x="116" y="140" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#ececf3" text-anchor="middle">TF</text>
+  <text x="80" y="330" font-family="Segoe UI, Arial, sans-serif" font-size="84" font-weight="700" fill="#ececf3">Tyrone B. Fontanilla</text>
+  <text x="80" y="402" font-family="Consolas, monospace" font-size="34" fill="#a99dff">IT Student | Aspiring Software Developer</text>
+  <text x="80" y="480" font-family="Segoe UI, Arial, sans-serif" font-size="30" fill="#a1a1b5">Building Digital Solutions Through Code and Creativity.</text>
+</svg>
