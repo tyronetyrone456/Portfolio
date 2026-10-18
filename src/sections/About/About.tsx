@@ -50,14 +50,20 @@ export function About() {
 
         <Reveal delay={0.1} className="space-y-6">
           {photo && (
-            <img
-              src={photo}
-              alt="Portrait of Tyrone Fontanilla"
-              width={400}
-              height={400}
-              loading="lazy"
-              className="aspect-square w-full max-w-xs rounded-2xl border border-border object-cover shadow-lg"
-            />
+            <figure className="card relative overflow-hidden">
+              <img
+                src={photo}
+                alt="Portrait of Tyrone Fontanilla"
+                width={600}
+                height={450}
+                loading="lazy"
+                className="aspect-[4/3] w-full object-cover object-top"
+              />
+              <figcaption className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border border-white/15 bg-black/55 px-4 py-2.5 text-sm text-white backdrop-blur-md">
+                <span className="font-medium">Tyrone B. Fontanilla</span>
+                <span className="font-mono text-xs text-white/70">BSIT</span>
+              </figcaption>
+            </figure>
           )}
           <dl className="card divide-y divide-border p-6">
             <Fact icon={GraduationCap} label="Degree program" value={facts.degree} />

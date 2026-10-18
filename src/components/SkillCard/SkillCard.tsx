@@ -4,12 +4,12 @@ import { StaggerItem } from '@/components/Reveal/Reveal'
 import type { SkillGroup } from '@/types'
 import { stagger } from '@/utils/motion'
 
-export function SkillCard({ group }: { group: SkillGroup }) {
+export function SkillCard({ group, className = '' }: { group: SkillGroup; className?: string }) {
   const Icon = group.icon
   const headingId = `skill-${group.id}`
 
   return (
-    <StaggerItem className="h-full">
+    <StaggerItem className={`h-full ${className}`}>
       <article aria-labelledby={headingId} className="card card-interactive h-full p-6">
         <div className="flex items-center gap-3">
           <span className="grid size-10 place-items-center rounded-xl border border-border bg-surface-2 text-accent">

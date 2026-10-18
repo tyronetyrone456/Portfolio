@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 import { motion } from 'framer-motion'
 import { Database, GitBranch, Globe, Terminal } from 'lucide-react'
+import { profile } from '@/data/profile'
+import { site } from '@/data/site'
 import { EASE } from '@/utils/motion'
 
 /** One line of the code card: [indent level, tokens]. */
@@ -22,7 +24,7 @@ const lines: Array<[number, ReactNode]> = [
 const chips = [
   { icon: Globe, label: 'Web', className: '-top-5 -left-3 sm:-left-8', delay: 0 },
   { icon: Database, label: 'SQL', className: 'top-1/3 -right-3 sm:-right-8', delay: 1.2 },
-  { icon: GitBranch, label: 'Git', className: '-bottom-5 left-8 sm:left-12', delay: 0.6 },
+  { icon: GitBranch, label: 'Git', className: '-bottom-6 right-8 sm:right-12', delay: 0.6 },
 ]
 
 export function HeroTerminal() {
@@ -80,6 +82,24 @@ export function HeroTerminal() {
           {m('// always learning, always building')}
         </p>
       </motion.div>
+
+      {profile.photo && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.6 }}
+          className="absolute -top-14 right-4 size-24 sm:right-8 lg:-top-28 lg:size-36"
+        >
+          <span className="ring-spin absolute -inset-[3px] rounded-full" aria-hidden />
+          <img
+            src={profile.photo}
+            alt={`Portrait of ${site.name}`}
+            width={144}
+            height={144}
+            className="relative size-full rounded-full border-4 border-bg object-cover object-top"
+          />
+        </motion.div>
+      )}
 
       {chips.map(({ icon: Icon, label, className, delay }) => (
         <motion.span

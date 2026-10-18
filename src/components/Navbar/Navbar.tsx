@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
-import { Download, Menu, X } from 'lucide-react'
+import { Download, Menu, Search, X } from 'lucide-react'
 import { Button } from '@/components/Button/Button'
+import { openCommandPalette } from '@/components/CommandPalette/CommandPalette'
 import { Container } from '@/components/Container/Container'
 import { ThemeToggle } from '@/components/ThemeToggle/ThemeToggle'
 import { navItems, resolveNavId, sectionIds } from '@/data/navigation'
@@ -96,6 +97,15 @@ export function Navbar() {
               Resume
             </Button>
           )}
+          <button
+            type="button"
+            onClick={openCommandPalette}
+            aria-label="Open command palette"
+            className="hidden h-11 items-center gap-2 rounded-xl border border-border bg-surface px-3 text-sm text-muted transition-colors hover:border-border-strong hover:text-fg md:inline-flex"
+          >
+            <Search className="size-4" aria-hidden />
+            <kbd className="rounded border border-border-strong px-1.5 font-mono text-[11px] text-subtle">Ctrl K</kbd>
+          </button>
           <ThemeToggle />
           <button
             type="button"

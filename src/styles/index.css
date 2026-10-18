@@ -96,26 +96,144 @@ body {
 
 /* ---------- Reusable pieces ---------- */
 .card {
+  position: relative;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 1rem;
   box-shadow: var(--shadow-card);
 }
 
+/* Pointer spotlight (soft fill) and border glow. --mx/--my are set by usePointerFx. */
+.card::before,
+.card::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.card::before {
+  background: radial-gradient(
+    380px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--accent) 12%, transparent),
+    transparent 65%
+  );
+}
+.card::after {
+  padding: 1px;
+  background: radial-gradient(
+    220px circle at var(--mx, 50%) var(--my, 50%),
+    color-mix(in oklab, var(--accent) 90%, transparent),
+    transparent 70%
+  );
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.card:hover::before,
+.card:hover::after {
+  opacity: 1;
+}
+
 .card-interactive {
-  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }
 .card-interactive:hover {
-  transform: translateY(-4px);
+  transform: perspective(1000px) translateY(-4px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
   border-color: color-mix(in oklab, var(--accent) 45%, var(--border));
   box-shadow: var(--shadow-card), 0 18px 40px -20px var(--glow);
 }
 
 .gradient-text {
-  background: linear-gradient(110deg, var(--accent), var(--accent-2));
+  background: linear-gradient(110deg, var(--accent), var(--accent-2), #e08bff, var(--accent));
+  background-size: 250% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+  animation: shimmer 8s linear infinite;
+}
+@keyframes shimmer {
+  to {
+    background-position: -250% 0;
+  }
+}
+
+/* ---------- Ambient layers ---------- */
+.bg-aurora {
+  position: fixed;
+  inset: -20vmax;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(40vmax 30vmax at 18% 12%, color-mix(in oklab, var(--grad-from) 22%, transparent), transparent 70%),
+    radial-gradient(36vmax 28vmax at 85% 30%, color-mix(in oklab, var(--accent-2) 16%, transparent), transparent 70%),
+    radial-gradient(44vmax 32vmax at 50% 95%, color-mix(in oklab, #c14bff 12%, transparent), transparent 70%);
+  animation: aurora 40s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  to {
+    transform: translate3d(3vmax, -2vmax, 0) rotate(6deg) scale(1.06);
+  }
+}
+
+.bg-noise {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.cursor-aura {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 38rem;
+  height: 38rem;
+  margin: -19rem 0 0 -19rem;
+  border-radius: 9999px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translate3d(var(--cx, -50rem), var(--cy, -50rem), 0);
+  background: radial-gradient(circle, color-mix(in oklab, var(--accent) 14%, transparent), transparent 62%);
+  transition: opacity 0.6s ease;
+}
+:root[data-aura='on'] .cursor-aura {
+  opacity: 1;
+}
+
+/* ---------- Marquee ---------- */
+.marquee {
+  overflow: hidden;
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+.marquee-track {
+  animation: marquee 48s linear infinite;
+}
+.marquee:hover .marquee-track {
+  animation-play-state: paused;
+}
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Portrait ring ---------- */
+.ring-spin {
+  background: conic-gradient(from 0deg, var(--accent), var(--accent-2), #e08bff, transparent 60%, var(--accent));
+  animation: spin 7s linear infinite;
+}
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .section-divider {
@@ -204,7 +322,11 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .glow,
   .scroll-dot,
-  .caret {
+  .caret,
+  .gradient-text,
+  .bg-aurora,
+  .marquee-track,
+  .ring-spin {
     animation: none;
   }
   .card-interactive:hover {

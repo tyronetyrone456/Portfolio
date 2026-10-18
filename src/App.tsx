@@ -1,8 +1,11 @@
 import { MotionConfig } from 'framer-motion'
+import { CommandPalette } from '@/components/CommandPalette/CommandPalette'
 import { Footer } from '@/components/Footer/Footer'
 import { Navbar } from '@/components/Navbar/Navbar'
+import { PointerFx } from '@/components/PointerFx/PointerFx'
 import { ScrollProgress } from '@/components/ScrollProgress/ScrollProgress'
 import { ScrollToTop } from '@/components/ScrollToTop/ScrollToTop'
+import { TechMarquee } from '@/components/TechMarquee/TechMarquee'
 import { ThemeProvider } from '@/hooks/useTheme'
 import { ToastProvider } from '@/hooks/useToast'
 import { About } from '@/sections/About/About'
@@ -29,10 +32,13 @@ export default function App() {
             Skip to content
           </a>
           <div className="bg-grid" aria-hidden />
+          <PointerFx />
           <ScrollProgress />
           <Navbar />
+          <CommandPalette />
           <main id="main">
             <Hero />
+            <TechMarquee />
             <About />
             <Skills />
             <Projects />

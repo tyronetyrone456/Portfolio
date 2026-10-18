@@ -6,6 +6,7 @@ import { site } from '@/data/site'
 import { useResumeStatus } from '@/hooks/useResumeAvailable'
 import { cn } from '@/utils'
 import { fadeUp, stagger } from '@/utils/motion'
+import { HeroStats } from './HeroStats'
 import { HeroTerminal } from './HeroTerminal'
 
 const badgeTone = {
@@ -88,6 +89,9 @@ export function Hero() {
             <Button href="#contact" variant="ghost" icon={Mail} iconPosition="left">
               Contact Me
             </Button>
+          </motion.div>
+          <motion.div variants={fadeUp}>
+            <HeroStats />
           </motion.div>
         </motion.div>
 
