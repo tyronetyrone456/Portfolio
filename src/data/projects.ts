@@ -14,6 +14,24 @@ import type { Project } from '@/types'
  */
 export const projects: Project[] = [
   {
+    id: 'bookshelf-app',
+    title: 'BookShelf: Personal Reading Tracker',
+    summary: 'An Android app for tracking the books you want to read, are reading, and have finished.',
+    description:
+      'BookShelf is a native Android app that lets readers build a personal library, track reading progress page by page, rate and favorite books, and search their collection. Data is stored on the device with Room, and each user has their own account and profile.',
+    category: 'Mobile Development',
+    stack: ['Kotlin', 'Jetpack Compose', 'Material 3', 'Room', 'Navigation Compose', 'MVVM'],
+    features: [
+      'User registration, login, and profile editing',
+      'Add books with genre, rating, and synopsis',
+      'Reading status: Want to Read, Reading, Completed',
+      'Page-by-page progress tracking',
+      'Favorites and search by title, author, or genre',
+      'Local storage with Room',
+    ],
+    confirmed: true,
+  },
+  {
     id: 'academic-advising-scheduler',
     title: 'AdviSched: Academic Advising and Consultation Scheduling',
     summary: 'A cross-platform app for booking consultations between students and faculty advisers.',

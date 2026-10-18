@@ -13,8 +13,6 @@ export interface Publishable {
 
 export const PROJECT_CATEGORIES = [
   'Web Development',
-  'Mobile Development',
-  'Programming',
   'Backend Development',
   'Database Systems',
   'Mobile Development',
