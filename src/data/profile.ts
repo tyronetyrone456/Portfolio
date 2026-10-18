@@ -9,9 +9,9 @@ export const profile = {
   ],
   facts: {
     degree: 'Bachelor of Science in Information Technology (BSIT)',
-    university: undefined as string | undefined,
+    university: 'Manuel S. Enverga University Foundation' as string | undefined,
     yearLevel: undefined as string | undefined,
-    location: undefined as string | undefined,
+    location: 'Tayabas City, Quezon' as string | undefined,
     careerInterests: [
       'Web development',
       'Software development',

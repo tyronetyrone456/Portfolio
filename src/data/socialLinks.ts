@@ -10,7 +10,7 @@ const emailUrl = site.contact.email ? `mailto:${site.contact.email}` : ''
 
 export const socialLinks: SocialLink[] = [
   { id: 'github', kind: 'github', label: 'GitHub', url: githubUrl },
-  { id: 'linkedin', kind: 'linkedin', label: 'LinkedIn', url: '' },
+  { id: 'linkedin', kind: 'linkedin', label: 'LinkedIn', url: 'https://www.linkedin.com/in/tyrone-fontanilla-600506434/' },
   { id: 'email', kind: 'email', label: 'Email', url: emailUrl },
   // { id: 'facebook', kind: 'other', label: 'Facebook', url: 'https://...' },
 ]

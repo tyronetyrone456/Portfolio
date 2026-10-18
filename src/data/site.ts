@@ -30,7 +30,7 @@ export const site = {
 
   contact: {
     /** Public contact email. Leave empty until you want it shown. */
-    email: '',
+    email: 'tyronetyrone456@gmail.com',
     /**
      * Optional form backend (e.g. a Formspree URL: https://formspree.io/f/xxxx).
      * Empty = the form falls back to opening your email app via mailto.
@@ -40,7 +40,7 @@ export const site = {
 
   github: {
     /** Your GitHub username (no URL). Empty hides profile links and the graph. */
-    username: '',
+    username: 'tyronetyrone456',
     /** Uses a third-party image service; only enabled when a username is set. */
     showContributionGraph: false,
   },
