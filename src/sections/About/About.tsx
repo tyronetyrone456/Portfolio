@@ -22,7 +22,15 @@ function Fact({ icon: Icon, label, value }: { icon: LucideIcon; label: string; v
 }
 
 export function About() {
-  const { facts, bio, photo } = profile
+  const { facts, bio } = profile
+  const factRows = [
+    { icon: GraduationCap, label: 'Degree program', value: facts.degree },
+    { icon: School, label: 'University', value: facts.university },
+    { icon: Sparkles, label: 'Year level', value: facts.yearLevel },
+    { icon: MapPin, label: 'Location', value: facts.location },
+    { icon: Target, label: 'Professional goals', value: facts.goals },
+    { icon: Compass, label: 'Focus', value: 'Web, backend, and database development' },
+  ].filter((fact) => fact.value)
 
   return (
     <Section
@@ -31,7 +39,7 @@ export function About() {
       title="A student who builds to learn"
       description="A little context on who I am and where I'm heading."
     >
-      <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+      <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-14">
         <Reveal className="space-y-5 text-base text-muted sm:text-lg">
           {bio.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
@@ -48,32 +56,14 @@ export function About() {
           </div>
         </Reveal>
 
-        <Reveal delay={0.1} className="space-y-6">
-          {photo && (
-            <figure className="card relative overflow-hidden">
-              <img
-                src={photo}
-                alt="Portrait of Tyrone Fontanilla"
-                width={600}
-                height={450}
-                loading="lazy"
-                className="aspect-[4/3] w-full object-cover object-top"
-              />
-              <figcaption className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border border-white/15 bg-black/55 px-4 py-2.5 text-sm text-white backdrop-blur-md">
-                <span className="font-medium">Tyrone B. Fontanilla</span>
-                <span className="font-mono text-xs text-white/70">BSIT</span>
-              </figcaption>
-            </figure>
-          )}
+        <Reveal delay={0.1}>
           <dl className="card divide-y divide-border p-6">
-            <Fact icon={GraduationCap} label="Degree program" value={facts.degree} />
-            <Fact icon={School} label="University" value={facts.university} />
-            <Fact icon={Sparkles} label="Year level" value={facts.yearLevel} />
-            <Fact icon={MapPin} label="Location" value={facts.location} />
-            <Fact icon={Target} label="Professional goals" value={facts.goals} />
-            <Fact icon={Compass} label="Focus" value="Web, backend, and database development" />
+            {factRows.map((fact) => (
+              <Fact key={fact.label} {...fact} />
+            ))}
           </dl>
         </Reveal>
+
       </div>
     </Section>
   )

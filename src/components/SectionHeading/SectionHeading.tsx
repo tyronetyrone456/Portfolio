@@ -10,11 +10,8 @@ interface SectionHeadingProps {
 export function SectionHeading({ id, eyebrow, title, description }: SectionHeadingProps) {
   return (
     <Reveal className="mb-12 max-w-2xl">
-      <p className="mb-3 flex items-center gap-3 font-mono text-sm text-accent">
-        <span className="h-px w-8 bg-gradient-to-r from-accent to-transparent" aria-hidden />
-        {eyebrow}
-      </p>
-      <h2 id={id} className="font-display text-3xl font-semibold tracking-tight sm:text-4xl">
+      <p className="mb-3 font-mono text-xs font-medium tracking-[0.14em] text-accent uppercase">{eyebrow}</p>
+      <h2 id={id} className="font-display text-3xl font-semibold tracking-tight sm:text-[2.5rem] sm:leading-tight">
         {title}
       </h2>
       {description && <p className="mt-4 text-base text-muted sm:text-lg">{description}</p>}

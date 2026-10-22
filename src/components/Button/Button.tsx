@@ -22,13 +22,13 @@ interface ButtonProps {
 }
 
 const base =
-  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-xl font-medium whitespace-nowrap transition-all duration-200 active:scale-[0.97] disabled:pointer-events-none disabled:opacity-60'
+  'group inline-flex min-h-11 items-center justify-center gap-2 rounded-lg font-medium whitespace-nowrap transition-all duration-200 active:scale-[0.98] disabled:pointer-events-none disabled:opacity-60'
 
 const variants: Record<Variant, string> = {
   primary:
-    'bg-brand text-white shadow-[0_8px_24px_-10px_var(--glow)] hover:-translate-y-0.5 hover:shadow-[0_14px_30px_-10px_var(--glow)] hover:brightness-110',
+    'bg-brand text-white shadow-sm hover:brightness-110',
   secondary:
-    'border border-border-strong bg-surface text-fg hover:-translate-y-0.5 hover:border-accent/60 hover:bg-surface-2',
+    'border border-border-strong bg-surface text-fg hover:border-accent/60 hover:bg-surface-2',
   ghost: 'text-muted hover:bg-surface-2 hover:text-fg',
 }
 

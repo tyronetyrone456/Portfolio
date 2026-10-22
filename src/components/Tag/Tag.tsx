@@ -3,7 +3,7 @@ import { fadeUp } from '@/utils/motion'
 import { cn } from '@/utils'
 
 const classes =
-  'inline-flex items-center rounded-full border border-border bg-surface-2 px-2.5 py-1 text-xs font-medium text-muted'
+  'inline-flex items-center rounded-md border border-border bg-surface-2 px-2.5 py-1 text-xs font-medium text-muted'
 
 export function Tag({ children, className }: { children: string; className?: string }) {
   return <span className={cn(classes, className)}>{children}</span>

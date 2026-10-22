@@ -24,7 +24,7 @@ export function FilterChips({ label, groupId, options, value, onChange, counts }
             aria-pressed={active}
             onClick={() => onChange(option)}
             className={cn(
-              'relative min-h-10 rounded-full border px-4 text-sm font-medium transition-colors',
+              'relative min-h-10 rounded-lg border px-4 text-sm font-medium transition-colors',
               active
                 ? 'border-transparent text-white'
                 : 'border-border bg-surface text-muted hover:border-border-strong hover:text-fg',
@@ -33,7 +33,7 @@ export function FilterChips({ label, groupId, options, value, onChange, counts }
             {active && (
               <motion.span
                 layoutId={`chip-${groupId}`}
-                className="bg-brand absolute inset-0 rounded-full"
+                className="bg-brand absolute inset-0 rounded-lg"
                 transition={{ type: 'spring', stiffness: 400, damping: 34 }}
               />
             )}
