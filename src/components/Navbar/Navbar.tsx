@@ -1,14 +1,12 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll } from 'framer-motion'
-import { Download, Menu, Search, X } from 'lucide-react'
-import { Button } from '@/components/Button/Button'
+import { Menu, Search, X } from 'lucide-react'
 import { openCommandPalette } from '@/components/CommandPalette/CommandPalette'
 import { Container } from '@/components/Container/Container'
 import { ThemeToggle } from '@/components/ThemeToggle/ThemeToggle'
 import { navItems, resolveNavId, sectionIds } from '@/data/navigation'
 import { site } from '@/data/site'
 import { useActiveSection } from '@/hooks/useActiveSection'
-import { useResumeStatus } from '@/hooks/useResumeAvailable'
 import { cn } from '@/utils'
 import { EASE } from '@/utils/motion'
 
@@ -17,7 +15,6 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const activeSection = useActiveSection(sectionIds)
   const activeId = resolveNavId(activeSection)
-  const resumeStatus = useResumeStatus()
   const { scrollY } = useScroll()
 
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 24))
@@ -84,19 +81,6 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          {resumeStatus === 'available' && (
-            <Button
-              href={site.resume.path}
-              download={site.resume.downloadName}
-              variant="secondary"
-              size="sm"
-              icon={Download}
-              iconPosition="left"
-              className="hidden lg:inline-flex"
-            >
-              Resume
-            </Button>
-          )}
           <button
             type="button"
             onClick={openCommandPalette}
@@ -154,17 +138,6 @@ export function Navbar() {
                   })}
                 </ul>
               </nav>
-              {resumeStatus === 'available' && (
-                <Button
-                  href={site.resume.path}
-                  download={site.resume.downloadName}
-                  icon={Download}
-                  iconPosition="left"
-                  className="mt-4 w-full"
-                >
-                  Download Resume
-                </Button>
-              )}
             </Container>
           </motion.div>
         )}

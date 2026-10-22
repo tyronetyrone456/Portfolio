@@ -23,7 +23,7 @@ Set `visible: false` to hide something without deleting it. If nothing is publis
 
 | What | File |
 | --- | --- |
-| Name, headline, intro, availability badge, resume path, contact email / form endpoint, GitHub username | `src/data/site.ts` |
+| Name, headline, intro, availability badge, contact email / form endpoint, GitHub username | `src/data/site.ts` |
 | About text, university, year level, location, goals | `src/data/profile.ts` |
 | Skills (add/remove strings) | `src/data/skills.ts` |
 | Projects | `src/data/projects.ts` |
@@ -41,10 +41,6 @@ Search, category filters, sorting, the details modal, and "Load more" (9 per pag
 ### Add a project
 Add an object to `projects` with `confirmed: true`. `repoUrl` and `demoUrl` are optional and hidden when missing.
 Screenshots go in `public/projects/` (`image: '/projects/name.png'`).
-
-### Resume
-Copy your PDF to `public/resume.pdf` (or change `site.resume.path`). The Download buttons, preview, and nav link
-appear automatically when the file exists and are hidden otherwise.
 
 ### Contact form
 No backend is bundled, and the form never claims to have sent anything it did not.
@@ -68,7 +64,7 @@ src/
   components/   reusable UI (Button, Navbar, Modal, ProjectCard, CertificateCard, ...)
   sections/     page sections (Hero, About, Skills, Projects, Certificates, Journey, ...)
   data/         all editable content
-  hooks/        theme, toast, scroll-spy, focus trap, resume check
+  hooks/        theme, toast, scroll-spy, focus trap
   types/        shared TypeScript types
   utils/        helpers and motion presets
   styles/       global CSS and design tokens
