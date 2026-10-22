@@ -1,13 +1,13 @@
 import { motion } from 'framer-motion'
-import { Award, Download, FolderGit2, Mail } from 'lucide-react'
+import { ArrowRight, Download, Mail, MapPin } from 'lucide-react'
 import { Button } from '@/components/Button/Button'
 import { Container } from '@/components/Container/Container'
+import { profile } from '@/data/profile'
 import { site } from '@/data/site'
 import { useResumeStatus } from '@/hooks/useResumeAvailable'
 import { cn } from '@/utils'
-import { fadeUp, stagger } from '@/utils/motion'
+import { EASE, fadeUp, stagger } from '@/utils/motion'
 import { HeroStats } from './HeroStats'
-import { HeroTerminal } from './HeroTerminal'
 
 const badgeTone = {
   neutral: 'bg-accent',
@@ -17,24 +17,21 @@ const badgeTone = {
 
 export function Hero() {
   const resumeStatus = useResumeStatus()
-  const nameParts = site.name.split(' ')
-  const lastName = nameParts.pop()
-  const leadingNames = nameParts.join(' ')
+  const { photo, facts } = profile
 
   return (
     <section
       id="home"
       aria-labelledby="home-title"
-      className="relative flex min-h-dvh items-center overflow-hidden pt-24 pb-24 sm:pb-28"
+      className="relative flex min-h-dvh items-center overflow-hidden pt-28 pb-20"
     >
-      <div className="glow glow-a" aria-hidden />
-      <div className="glow glow-b" aria-hidden />
+      <div className="hero-wash" aria-hidden />
 
-      <Container className="relative grid grid-cols-1 items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-        <motion.div className="min-w-0" variants={stagger(0.1, 0.1)} initial="hidden" animate="show">
+      <Container className="relative grid grid-cols-1 items-center gap-12 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
+        <motion.div className="min-w-0" variants={stagger(0.08, 0.05)} initial="hidden" animate="show">
           <motion.p
             variants={fadeUp}
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-surface px-3.5 py-1.5 text-sm text-muted"
+            className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-3 py-1.5 text-sm text-muted"
           >
             <span className="relative flex size-2" aria-hidden>
               <span className={cn('absolute inline-flex size-full rounded-full opacity-60 motion-safe:animate-ping', badgeTone[site.availability.tone])} />
@@ -46,68 +43,75 @@ export function Hero() {
           <motion.h1
             id="home-title"
             variants={fadeUp}
-            className="mt-6 font-display text-5xl leading-[1.05] font-semibold tracking-tight sm:text-6xl lg:text-7xl"
+            className="mt-6 font-display text-5xl leading-[1.04] font-semibold tracking-tight sm:text-6xl lg:text-[4.25rem]"
           >
-            {leadingNames} <span className="gradient-text">{lastName}</span>
+            {site.name}
           </motion.h1>
 
-          <motion.p variants={fadeUp} className="mt-5 font-mono text-sm text-accent sm:text-base">
+          <motion.p variants={fadeUp} className="mt-5 font-mono text-sm font-medium text-accent">
             {site.title}
           </motion.p>
 
-          <motion.p
-            variants={fadeUp}
-            className="mt-6 max-w-xl font-display text-2xl leading-snug font-medium text-fg sm:text-3xl"
-          >
+          <motion.p variants={fadeUp} className="mt-7 max-w-xl text-xl leading-snug font-medium text-fg sm:text-2xl">
             {site.headline}
           </motion.p>
 
-          <motion.p variants={fadeUp} className="mt-5 max-w-xl text-base text-muted sm:text-lg">
+          <motion.p variants={fadeUp} className="mt-4 max-w-xl text-base text-muted sm:text-lg">
             {site.intro}
           </motion.p>
 
           <motion.div variants={fadeUp} className="mt-9 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-            <Button href="#projects" icon={FolderGit2}>
-              View My Projects
+            <Button href="#projects" icon={ArrowRight}>
+              View my projects
             </Button>
-            <Button href="#certificates" variant="secondary" icon={Award}>
-              Explore My Certificates
-            </Button>
-          </motion.div>
-          <motion.div variants={fadeUp} className="mt-3 flex flex-col gap-1 sm:-ml-4 sm:flex-row sm:flex-wrap">
             {resumeStatus === 'available' && (
               <Button
                 href={site.resume.path}
                 download={site.resume.downloadName}
-                variant="ghost"
+                variant="secondary"
                 icon={Download}
                 iconPosition="left"
               >
-                Download Resume
+                Download resume
               </Button>
             )}
             <Button href="#contact" variant="ghost" icon={Mail} iconPosition="left">
-              Contact Me
+              Contact me
             </Button>
-          </motion.div>
-          <motion.div variants={fadeUp}>
-            <HeroStats />
           </motion.div>
         </motion.div>
 
-        <HeroTerminal />
+        <motion.aside
+          aria-label="Profile summary"
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: EASE, delay: 0.25 }}
+          className="mx-auto w-full max-w-sm min-w-0 lg:max-w-none"
+        >
+          <div className="card overflow-hidden">
+            {photo && (
+              <img
+                src={photo}
+                alt={`Portrait of ${site.name}`}
+                width={600}
+                height={560}
+                className="aspect-[6/5] w-full object-cover object-top"
+              />
+            )}
+            <div className="p-6">
+              <p className="text-lg font-semibold tracking-tight">{site.name}</p>
+              <p className="mt-0.5 text-sm text-muted">{facts.degree}</p>
+              {facts.location && (
+                <p className="mt-3 flex items-center gap-1.5 text-sm text-subtle">
+                  <MapPin className="size-4 shrink-0" aria-hidden />
+                  {facts.location}
+                </p>
+              )}
+              <HeroStats />
+            </div>
+          </div>
+        </motion.aside>
       </Container>
-
-      <a
-        href="#about"
-        aria-label="Scroll to About section"
-        className="scroll-hint absolute bottom-6 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-xs text-subtle transition-colors hover:text-fg sm:flex"
-      >
-        Scroll
-        <span className="flex h-9 w-6 justify-center rounded-full border border-border-strong pt-2" aria-hidden>
-          <span className="scroll-dot block h-1.5 w-1 rounded-full bg-accent" />
-        </span>
-      </a>
     </section>
   )
 }

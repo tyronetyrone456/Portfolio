@@ -37,11 +37,11 @@ export function HeroStats() {
   ].filter((stat) => stat.value > 0)
 
   return (
-    <dl className="mt-10 flex max-w-md divide-x divide-border border-t border-border pt-6">
+    <dl className="mt-5 flex divide-x divide-border border-t border-border pt-5">
       {stats.map((stat) => (
         <div key={stat.label} className="flex-1 px-4 first:pl-0 last:pr-0">
           <dt className="text-xs font-medium tracking-wide text-subtle uppercase">{stat.label}</dt>
-          <dd className="mt-1 font-display text-3xl font-semibold tabular-nums">
+          <dd className="mt-1 text-2xl font-semibold tabular-nums">
             <Counter to={stat.value} />
             <span className="text-accent">+</span>
           </dd>

@@ -22,7 +22,7 @@ function Fact({ icon: Icon, label, value }: { icon: LucideIcon; label: string; v
 }
 
 export function About() {
-  const { facts, bio, photo } = profile
+  const { facts, bio } = profile
   const factRows = [
     { icon: GraduationCap, label: 'Degree program', value: facts.degree },
     { icon: School, label: 'University', value: facts.university },
@@ -39,7 +39,7 @@ export function About() {
       title="A student who builds to learn"
       description="A little context on who I am and where I'm heading."
     >
-      <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14">
+      <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-14">
         <Reveal className="space-y-5 text-base text-muted sm:text-lg">
           {bio.map((paragraph) => (
             <p key={paragraph}>{paragraph}</p>
@@ -54,31 +54,16 @@ export function About() {
               ))}
             </ul>
           </div>
-          <dl className="card mt-8 divide-y divide-border p-6">
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <dl className="card divide-y divide-border p-6">
             {factRows.map((fact) => (
               <Fact key={fact.label} {...fact} />
             ))}
           </dl>
         </Reveal>
 
-        <Reveal delay={0.1} className="lg:sticky lg:top-28 lg:self-start">
-          {photo && (
-            <figure className="card relative overflow-hidden">
-              <img
-                src={photo}
-                alt="Portrait of Tyrone Fontanilla"
-                width={600}
-                height={750}
-                loading="lazy"
-                className="aspect-[4/5] w-full object-cover object-top"
-              />
-              <figcaption className="absolute inset-x-3 bottom-3 flex items-center justify-between gap-3 rounded-xl border border-white/15 bg-black/55 px-4 py-2.5 text-sm text-white backdrop-blur-md">
-                <span className="font-medium">Tyrone B. Fontanilla</span>
-                <span className="font-mono text-xs text-white/70">BSIT</span>
-              </figcaption>
-            </figure>
-          )}
-        </Reveal>
       </div>
     </Section>
   )
