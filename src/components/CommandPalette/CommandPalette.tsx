@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import type { KeyboardEvent as ReactKeyboardEvent } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
-import { ArrowUpRight, CornerDownLeft, Mail, Moon, Search, Sun } from 'lucide-react'
+import { ArrowUpRight, CornerDownLeft, Download, Mail, Moon, Search, Sun } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import { navItems } from '@/data/navigation'
 import { site } from '@/data/site'
 import { socialLinks } from '@/data/socialLinks'
 import { useFocusTrap } from '@/hooks/useFocusTrap'
+import { useResumeStatus } from '@/hooks/useResumeAvailable'
 import { useTheme } from '@/hooks/useTheme'
 import { cn, isExternalUrl, prefersReducedMotion } from '@/utils'
 import { EASE } from '@/utils/motion'
@@ -35,6 +36,7 @@ export function CommandPalette() {
   const listRef = useRef<HTMLUListElement>(null)
   const inputRef = useRef<HTMLInputElement>(null)
   const { theme, toggleTheme } = useTheme()
+  const resumeStatus = useResumeStatus()
 
   const close = useCallback(() => {
     setOpen(false)
@@ -84,6 +86,20 @@ export function CommandPalette() {
       icon: theme === 'dark' ? Sun : Moon,
       run: toggleTheme,
     })
+    if (resumeStatus === 'available') {
+      list.push({
+        id: 'resume',
+        label: 'Download resume',
+        group: 'Actions',
+        icon: Download,
+        run: () => {
+          const a = document.createElement('a')
+          a.href = site.resume.path
+          a.download = site.resume.downloadName
+          a.click()
+        },
+      })
+    }
     for (const link of socialLinks.filter((l) => l.url)) {
       list.push({
         id: `link-${link.id}`,
@@ -98,7 +114,7 @@ export function CommandPalette() {
       })
     }
     return list
-  }, [theme, toggleTheme])
+  }, [theme, toggleTheme, resumeStatus])
 
   const results = useMemo(() => {
     const q = query.trim().toLowerCase()

@@ -16,6 +16,7 @@ import { Hero } from '@/sections/Hero/Hero'
 import { Interests } from '@/sections/Interests/Interests'
 import { Journey } from '@/sections/Journey/Journey'
 import { Projects } from '@/sections/Projects/Projects'
+import { Resume } from '@/sections/Resume/Resume'
 import { Skills } from '@/sections/Skills/Skills'
 
 export default function App() {
@@ -45,6 +46,7 @@ export default function App() {
             <Journey />
             <Interests />
             <GitHub />
+            <Resume />
             <Contact />
           </main>
           <Footer />

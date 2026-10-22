@@ -1,8 +1,9 @@
 import { motion } from 'framer-motion'
-import { Award, FolderGit2, Mail } from 'lucide-react'
+import { Award, Download, FolderGit2, Mail } from 'lucide-react'
 import { Button } from '@/components/Button/Button'
 import { Container } from '@/components/Container/Container'
 import { site } from '@/data/site'
+import { useResumeStatus } from '@/hooks/useResumeAvailable'
 import { cn } from '@/utils'
 import { fadeUp, stagger } from '@/utils/motion'
 import { HeroStats } from './HeroStats'
@@ -15,6 +16,7 @@ const badgeTone = {
 } as const
 
 export function Hero() {
+  const resumeStatus = useResumeStatus()
   const nameParts = site.name.split(' ')
   const lastName = nameParts.pop()
   const leadingNames = nameParts.join(' ')
@@ -73,6 +75,17 @@ export function Hero() {
             </Button>
           </motion.div>
           <motion.div variants={fadeUp} className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+            {resumeStatus === 'available' && (
+              <Button
+                href={site.resume.path}
+                download={site.resume.downloadName}
+                variant="ghost"
+                icon={Download}
+                iconPosition="left"
+              >
+                Download Resume
+              </Button>
+            )}
             <Button href="#contact" variant="ghost" icon={Mail} iconPosition="left">
               Contact Me
             </Button>

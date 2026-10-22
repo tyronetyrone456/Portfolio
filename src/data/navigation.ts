@@ -6,6 +6,7 @@ export const navItems: NavItem[] = [
   { id: 'skills', label: 'Skills' },
   { id: 'projects', label: 'Projects' },
   { id: 'certificates', label: 'Certificates' },
+  { id: 'resume', label: 'Resume' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -19,6 +20,7 @@ export const sectionIds = [
   'journey',
   'interests',
   'github',
+  'resume',
   'contact',
 ]
 
