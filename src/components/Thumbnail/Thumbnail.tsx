@@ -43,17 +43,17 @@ export function Thumbnail({
   return (
     <div
       aria-hidden
-      className={cn(
-        'relative flex size-full flex-col items-center justify-center gap-2 overflow-hidden text-white/80',
-        className,
-      )}
+      className={cn('relative flex size-full flex-col items-center justify-center gap-3 overflow-hidden bg-surface-2', className)}
       style={{
-        backgroundImage: `radial-gradient(circle at 25% 20%, hsl(${hue} 70% 55% / 0.55), transparent 60%), linear-gradient(135deg, hsl(${hue} 45% 18%), hsl(${(hue + 50) % 360} 50% 12%))`,
+        backgroundImage: `radial-gradient(60% 70% at 50% 0%, hsl(${hue} 60% 55% / 0.16), transparent 70%), radial-gradient(var(--border-strong) 1px, transparent 1px)`,
+        backgroundSize: 'auto, 18px 18px',
       }}
     >
-      <Icon className="size-8 opacity-90" strokeWidth={1.5} />
+      <span className="grid size-12 place-items-center rounded-xl border border-border-strong bg-surface text-accent shadow-sm">
+        <Icon className="size-5" strokeWidth={1.75} />
+      </span>
       {label && (
-        <span className="max-w-[80%] truncate font-mono text-[11px] tracking-wide uppercase opacity-70">
+        <span className="max-w-[80%] truncate font-mono text-[11px] tracking-[0.14em] text-subtle uppercase">
           {label}
         </span>
       )}

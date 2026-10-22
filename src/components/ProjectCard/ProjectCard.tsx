@@ -34,7 +34,7 @@ export const ProjectCard = memo(function ProjectCard({ project, index, onOpen }:
               label={project.category}
             />
           </div>
-          <span className="absolute top-3 left-3 rounded-full border border-white/15 bg-black/55 px-2.5 py-1 text-xs font-medium text-white">
+          <span className="absolute top-3 left-3 rounded-md border border-border bg-surface/90 px-2.5 py-1 text-xs font-medium text-fg backdrop-blur-sm">
             {project.category}
           </span>
           {isSample(project) && (
