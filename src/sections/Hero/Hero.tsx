@@ -74,7 +74,7 @@ export function Hero() {
               Explore My Certificates
             </Button>
           </motion.div>
-          <motion.div variants={fadeUp} className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <motion.div variants={fadeUp} className="mt-3 flex flex-col gap-1 sm:-ml-4 sm:flex-row sm:flex-wrap">
             {resumeStatus === 'available' && (
               <Button
                 href={site.resume.path}

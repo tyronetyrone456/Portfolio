@@ -22,7 +22,7 @@ const lines: Array<[number, ReactNode]> = [
 ]
 
 const chips = [
-  { icon: Globe, label: 'Web', className: '-top-5 -left-3 sm:-left-8', delay: 0 },
+  { icon: Globe, label: 'Web', className: 'top-6 left-0 lg:top-12 sm:-left-8', delay: 0 },
   { icon: Database, label: 'SQL', className: 'top-1/3 -right-3 sm:-right-8', delay: 1.2 },
   { icon: GitBranch, label: 'Git', className: '-bottom-6 right-8 sm:right-12', delay: 0.6 },
 ]
@@ -33,7 +33,7 @@ export function HeroTerminal() {
       initial={{ opacity: 0, y: 30, scale: 0.97 }}
       animate={{ opacity: 1, y: 0, scale: 1 }}
       transition={{ duration: 0.8, ease: EASE, delay: 0.35 }}
-      className="relative mx-auto w-full min-w-0 max-w-md lg:max-w-none"
+      className="relative mx-auto w-full min-w-0 max-w-md pt-16 lg:max-w-none lg:pt-24"
     >
       <motion.div
         animate={{ y: [0, -8, 0] }}
@@ -88,7 +88,7 @@ export function HeroTerminal() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.7, ease: EASE, delay: 0.6 }}
-          className="absolute -top-14 right-4 size-24 sm:right-8 lg:-top-28 lg:size-36"
+          className="absolute top-0 right-4 size-24 sm:right-8 lg:size-36"
         >
           <span className="ring-spin absolute -inset-[3px] rounded-full" aria-hidden />
           <img
