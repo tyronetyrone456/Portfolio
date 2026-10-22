@@ -37,7 +37,7 @@ export function Contact() {
   return (
     <Section
       id="contact"
-      eyebrow="08 / Contact"
+      eyebrow="09 / Contact"
       title="Let's connect"
       description="Questions, opportunities, or just want to talk tech? I'd like to hear from you."
     >

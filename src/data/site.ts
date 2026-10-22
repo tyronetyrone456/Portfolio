@@ -22,6 +22,12 @@ export const site = {
   /** Sample (unconfirmed) projects/certificates/repos show only in `npm run dev`. */
   showSamples: import.meta.env.DEV,
 
+  /** Put your PDF in /public and point to it here. Buttons hide if it is missing. */
+  resume: {
+    path: '/resume.pdf',
+    downloadName: 'Tyrone-Fontanilla-Resume.pdf',
+  },
+
   contact: {
     /** Public contact email. Leave empty until you want it shown. */
     email: 'tyronetyrone456@gmail.com',
